@@ -1,0 +1,8 @@
+{% extends 'base_site.html' %}
+
+{% block maincontent %}
+<form action="" method="get" class="form-control">{% csrf_token %}
+    {{form.as_p}}  <!-- # this is from the dictionary key in views.py for the required form -->
+    <input type="submit" name="Submit" value="Submit" id="">
+</form>
+{% endblock maincontent %}
