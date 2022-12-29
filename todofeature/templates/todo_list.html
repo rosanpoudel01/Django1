@@ -2,4 +2,43 @@
 
 {% block maincontent %} 
 <h1>My Todo List</h1>
+<table class="table table-bordered table-hover">
+<thead>
+   <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Priority</th>
+   <th>Action</th>
+
+   </tr>
+</thead>
+   {% for task in tasks %}
+<tbody>
+   <tr>
+    <td><a href="{% url 'todofeature:todo_edit' task.id %}">{{task.name}}</a>
+        
+    </td>
+    <td>{{task.description}}</td>
+   
+    <td>
+      {% if task.priority == 'high' or task.priority == 'highest' %}
+      <p class="text-danger">{{task.priority}}</p>
+      {% elif task.priority == 'low' or task.priority == 'lowest'%}
+      <p class="text-success">{{task.priority}}</p>
+      {% elif task.priority == 'medium' %}
+      <p class="text-warning">{{task.priority}}</p>
+      {% endif %}
+   </td>  
+  <td><a class="btn btn-danger" href="{% url 'todofeature:todo_delete' task.id %}">Delete</a></td>
+   </tr>
+   {% endfor %}
+</tbody>
+</table>
+
 {% endblock maincontent %}
+{% block script%}
+{{ block.super }}
+<script type="text/javascript">
+
+</script>
+{% endblock script %}

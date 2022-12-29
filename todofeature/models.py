@@ -35,7 +35,7 @@ class Task(TimeStamp):
     name = models.CharField(max_length=255)
     description = models.TextField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to="todoimg", blank=True, null=True)
-    task_date = models.DateField()
+    task_date = models.DateField(blank=True, null=True)
     priority = models.CharField(
         max_length=100,
         choices=Priority.choices,
@@ -47,7 +47,8 @@ class Task(TimeStamp):
         blank=True,
         null=True,
     )
-    labels = models.ManyToManyField(Label)
+    labels = models.ManyToManyField(Label, blank=True)
+    is_done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
