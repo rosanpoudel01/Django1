@@ -1,7 +1,7 @@
 {% extends 'base_site.html' %}
 
 {% block maincontent %}
-<form action="" method="post">{% csrf_token %}
+<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
     {{form.as_p}} 
      <!-- # this is from the dictionary key in views.py for the required form -->
     <!-- {{ form.non_field_errors }} -->

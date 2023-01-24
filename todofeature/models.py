@@ -30,6 +30,20 @@ class Priority(models.TextChoices):
     HIGH = "high", "High"
     HIGHEST = "highest", "Highest"
 
+    # @property
+    # def priority_color(self):
+    #     if self.priority == "Low" or self.priority == "Lowest":
+    #         return "green"
+    #     elif self.priority == "High" or self.priority == "Highest":
+    #         return "red"
+    #     else:
+    #         return "yellow"
+
+
+class TaskProirity(TimeStamp):
+    name = models.CharField(max_length=20)
+    color = models.CharField(max_length=20)
+
 
 class Task(TimeStamp):
     name = models.CharField(max_length=255)
